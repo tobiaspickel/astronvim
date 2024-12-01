@@ -48,7 +48,7 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
-        [":"] = { ":Telescope cmdline<CR>" },
+        -- [":"] = { ":Telescope cmdline<CR>" },
         ["q"] = { "<Esc>" },
         ["x"] = { '"_x' },
 
