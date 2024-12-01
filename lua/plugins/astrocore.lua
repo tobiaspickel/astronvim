@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -32,6 +32,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        showtabline = 0,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -47,19 +48,22 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
-        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        [":"] = { ":Telescope cmdline<CR>" },
+        ["q"] = { "<Esc>" },
+        ["x"] = { '"_x' },
 
-        -- mappings seen under group name "Buffer"
-        ["<Leader>bd"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Close buffer from tabline",
+        ["<leader>xc"] = { "<cmd>ZenMode <CR>" },
+        ["<leader>b"] = { name = "Buffers" },
+        ["<C-a>"] = {
+          function() require("harpoon.mark").add_file() end,
         },
-
+        ["<C-e>"] = {
+          "<cmd>Telescope oldfiles <CR>",
+        },
+        ["<leader>ee"] = {
+          function() require("dropbar.api").pick() end,
+        },
+        ["<leader>fd"] = { "<cmd>Telescope dir live_grep<CR>" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
