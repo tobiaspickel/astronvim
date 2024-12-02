@@ -72,6 +72,15 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+
+        -- ["<leader>sc"] = { "<cmd>:mkspell! ~/.config/nvim/spell/en.utf-8.add<CR>" },
+        ["<leader>sc"] = {
+          function()
+            vim.cmd ":mkspell! ~/.config/nvim/spell/en.utf-8.add"
+            vim.cmd ":set spell"
+            vim.cmd ":set spelllang=en"
+          end,
+        },
       },
     },
   },
