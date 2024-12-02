@@ -56,9 +56,6 @@ return {
 
         ["<leader>xc"] = { "<cmd>ZenMode <CR>" },
         ["<leader>b"] = { name = "Buffers" },
-        ["<C-a>"] = {
-          function() require("harpoon.mark").add_file() end,
-        },
         ["<C-e>"] = {
           "<cmd>Telescope oldfiles <CR>",
         },
