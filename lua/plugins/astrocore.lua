@@ -33,7 +33,7 @@ return {
         spelllang = "en_us",
         spelloptions = "camel",
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
         showtabline = 0,
       },
       g = { -- vim.g.<key>
