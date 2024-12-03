@@ -11,3 +11,7 @@ args
 autodocs
 async
 eslint
+vitest
+vite
+config
+fx
