@@ -15,4 +15,5 @@ return {
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
 }

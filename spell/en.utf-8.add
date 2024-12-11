@@ -2,6 +2,9 @@ bg
 Neovim
 lefthand
 px
+py
+sm
+md
 xl
 sr
 CTA
@@ -15,3 +18,7 @@ vitest
 vite
 config
 fx
+calc
+nowrap
+pb
+xs
