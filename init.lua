@@ -17,3 +17,12 @@ end
 
 require "lazy_setup"
 require "polish"
+
+-- Define on_attach function
+local on_attach = function(client, bufnr)
+  -- ...custom on_attach logic...
+end
+
+-- Define capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)

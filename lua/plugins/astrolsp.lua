@@ -26,7 +26,7 @@ return {
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
-          'json'
+          "json",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
@@ -46,30 +46,37 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       emmet_ls = { filetypes = "html" },
-      vtsls = {
-        -- Disable problematic signature help feature
-        handlers = {
-          ["textDocument/signatureHelp"] = function() return { signatures = {} } end,
-        },
+      -- Remove vtsls configuration
+      -- vtsls = { enabled = false },
+      tsserver = {
+        on_attach = function(client, bufnr)
+          -- Disable tsserver's formatting capability to use a different formatter
+          client.server_capabilities.documentFormattingProvider = false
+          -- Custom on_attach logic
+          -- ...existing code...
+        end,
         settings = {
-          typescript = {
-            inlayHints = {
-              parameterNames = { enabled = "none" },
-              parameterTypes = { enabled = false },
-              variableTypes = { enabled = false },
-              propertyDeclarationTypes = { enabled = false },
-              functionLikeReturnTypes = { enabled = false },
-              enumMemberValues = { enabled = false },
-            },
-          },
+          -- Custom settings for tsserver
           javascript = {
             inlayHints = {
-              parameterNames = { enabled = "none" },
-              parameterTypes = { enabled = false },
-              variableTypes = { enabled = false },
-              propertyDeclarationTypes = { enabled = false },
-              functionLikeReturnTypes = { enabled = false },
-              enumMemberValues = { enabled = false },
+              includeInlayParameterNameHints = "none",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
+            },
+          },
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "none",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
             },
           },
         },
