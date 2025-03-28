@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCommunity: import any community modules here
 -- We import this file in `lazy_setup.lua` before the `plugins/` folder.
@@ -12,7 +12,6 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.editing-support.zen-mode-nvim" },
-  { import = "astrocommunity.diagnostics.trouble-nvim" },
+  -- { import = "astrocommunityiagnostics.trouble-nvim" },
   -- import/override with your plugins folder
 }

@@ -61,7 +61,15 @@ return {
           end,
           desc = "Close buffer from tabline",
         },
+        ["<leader>ee"] = {
+          function() require("dropbar.api").pick() end,
+        },
 
+        [ "<leader>E"] = {function() require("snacks").explorer() end },
+
+        ["<C-e>"] = {
+          function() require("snacks").picker.recent() end,
+        },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
