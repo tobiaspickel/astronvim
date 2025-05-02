@@ -12,6 +12,7 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.editing-support.yanky-nvim" },
   -- { import = "astrocommunityiagnostics.trouble-nvim" },
   -- import/override with your plugins folder
 }
