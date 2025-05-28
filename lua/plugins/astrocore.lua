@@ -33,7 +33,7 @@ return {
         spelllang = "en_us",
         spelloptions = "camel",
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -65,7 +65,7 @@ return {
           function() require("dropbar.api").pick() end,
         },
 
-        [ "<leader>E"] = {function() require("snacks").explorer() end },
+        ["<leader>E"] = { function() require("snacks").explorer() end },
 
         ["<C-e>"] = {
           function() require("snacks").picker.recent() end,
