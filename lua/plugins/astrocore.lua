@@ -4,6 +4,21 @@
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
+--
+
+local function relative_path_from_package_root()
+  local handle = io.popen "git rev-parse --show-toplevel 2>/dev/null"
+  local root = handle:read "*l"
+  handle:close()
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if root then
+    local relpath = vim.fn.fnamemodify(filepath, ":.:" .. root)
+    vim.fn.setreg("+", relpath)
+    print("Copied relative path: " .. relpath)
+  else
+    print "Not inside a git repository."
+  end
+end
 
 ---@type LazySpec
 return {
@@ -83,6 +98,21 @@ return {
             vim.cmd ":mkspell! ~/.config/nvim/spell/en.utf-8.add"
             vim.cmd ":set spell"
             vim.cmd ":set spelllang=en"
+          end,
+        },
+        ["<leader>rp"] = {
+          function()
+            local handle = io.popen "git rev-parse --show-toplevel 2>/dev/null"
+            local root = handle:read "*l"
+            handle:close()
+            local filepath = vim.api.nvim_buf_get_name(0)
+            if root then
+              local relpath = vim.fn.fnamemodify(filepath, ":.:" .. root)
+              vim.fn.setreg("+", relpath)
+              print("Copied relative path: " .. relpath)
+            else
+              print "Not inside a git repository."
+            end
           end,
         },
       },
