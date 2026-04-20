@@ -1,3 +1,5 @@
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 -- This function is taken from LazyVim: https://github.com/LazyVim/LazyVim/blob/cb223553ff73eb2f37ffb5dc0bb75b76a4677faf/lua/lazyvim/plugins/extras/editor/mini-files.lua
 local function map_split(buf_id, lhs, direction, close_on_file)
   local files = require "mini.files"
