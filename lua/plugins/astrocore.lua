@@ -1,24 +1,9 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
--- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
+-- AstroCore provides nc-core a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
---
-
-local function relative_path_from_package_root()
-  local handle = io.popen "git rev-parse --show-toplevel 2>/dev/null"
-  local root = handle:read "*l"
-  handle:close()
-  local filepath = vim.api.nvim_buf_get_name(0)
-  if root then
-    local relpath = vim.fn.fnamemodify(filepath, ":.:" .. root)
-    vim.fn.setreg("+", relpath)
-    print("Copied relative path: " .. relpath)
-  else
-    print "Not inside a git repository."
-  end
-end
 
 ---@type LazySpec
 return {
@@ -38,6 +23,19 @@ return {
     diagnostics = {
       virtual_text = true,
       underline = true,
+    },
+    -- passed to `vim.filetype.add`
+    filetypes = {
+      -- see `:h vim.filetype.add` for usage
+      extension = {
+        foo = "fooscript",
+      },
+      filename = {
+        [".foorc"] = "fooscript",
+      },
+      pattern = {
+        [".*/etc/foo/.*"] = "fooscript",
+      },
     },
     -- vim options can be configured here
     options = {
@@ -115,6 +113,12 @@ return {
             end
           end,
         },
+        -- tables with just a `desc` key will be registered with which-key if it's installed
+        -- this is useful for naming menus
+        -- ["<Leader>b"] = { desc = "Buffers" },
+
+        -- setting a mapping to false will disable it
+        -- ["<C-S>"] = false,
       },
     },
   },
