@@ -81,7 +81,11 @@ return {
         ["<leader>E"] = { function() require("snacks").explorer() end },
 
         ["<C-e>"] = {
-          function() require("snacks").picker.recent() end,
+          function()
+            local root = vim.fs.root(0, ".git") or vim.fn.getcwd()
+            require("snacks").picker.recent { filter = { cwd = root } }
+          end,
+          desc = "Recent files (repo-scoped)",
         },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
